@@ -12,7 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "tb_client", uniqueConstraints = @UniqueConstraint(name = "UK_client_cpf", columnNames = "cpf"))
 public class Client implements Serializable {
 
-    private static final long serialVersionUID = 1l;
+    private static final long serialVersionUID = 1L;
 
     @Id @GeneratedValue(strategy = IDENTITY)
     private Long id;

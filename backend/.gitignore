@@ -35,3 +35,6 @@ build/
 ### MVN ###
 mvnw
 mvnw.cmd
+
+### Http Requests ###
+src/test/httprequests/
