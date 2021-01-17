@@ -4,6 +4,7 @@ import com.michaelmartins.dsclients.domain.entities.Client;
 import com.michaelmartins.dsclients.dto.ClientDTO;
 import com.michaelmartins.dsclients.exceptions.ResourceEntityNotFoundException;
 import com.michaelmartins.dsclients.repositories.ClientRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,14 @@ public class ClientService {
             Client.copyDtoToEntity(dto, client);
             return new ClientDTO(repository.save(client));
         } catch (EntityNotFoundException e) {
+            throw new ResourceEntityNotFoundException(format("Entity de id '%s' não existe.", id));
+        }
+    }
+
+    public void delete(Long id) {
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException emptyResultDataAccessException) {
             throw new ResourceEntityNotFoundException(format("Entity de id '%s' não existe.", id));
         }
     }
