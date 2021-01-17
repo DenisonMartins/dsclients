@@ -1,5 +1,7 @@
 package com.michaelmartins.dsclients.domain.entities;
 
+import com.michaelmartins.dsclients.dto.ClientDTO;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -33,6 +35,15 @@ public class Client implements Serializable {
         this.income = income;
         this.birthDate = birthDate;
         this.children = children;
+    }
+
+    public static Client copyDtoToEntity(ClientDTO dto, Client client) {
+        client.setName(dto.getName());
+        client.setCpf(dto.getCpf());
+        client.setIncome(dto.getIncome());
+        client.setBirthDate(dto.getBirthDate());
+        client.setChildren(dto.getChildren());
+        return client;
     }
 
     public Long getId() {
