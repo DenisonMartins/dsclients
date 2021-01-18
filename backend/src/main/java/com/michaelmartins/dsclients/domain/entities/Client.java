@@ -2,7 +2,10 @@ package com.michaelmartins.dsclients.domain.entities;
 
 import com.michaelmartins.dsclients.dto.ClientDTO;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -11,7 +14,7 @@ import java.util.Objects;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "tb_client", uniqueConstraints = @UniqueConstraint(name = "UK_client_cpf", columnNames = "cpf"))
+@Table(name = "tb_client")
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
